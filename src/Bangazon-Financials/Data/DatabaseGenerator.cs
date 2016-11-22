@@ -6,6 +6,14 @@ using Microsoft.Data.Sqlite;
 
 namespace Bangazon_Financials
 {
+
+    /**
+     * Class: NAME
+     * Purpose: DESCRIPTION
+     * Author: YOUR NAME
+     * Methods:
+     *     string DocMe() - description
+     */
     public class DatabaseGenerator
     {
         Random rnd = new Random();
@@ -20,6 +28,14 @@ namespace Bangazon_Financials
         int[] customerZipcode = new int[] { 37013, 37072, 38461, 37115, 37116, 37201, 37211, 37216, 37222 };
         string[] supplierState = new string[] { "AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DE", "DC", "FL", "GA", "HA", "ID", "IL", "IN", "IA", "KA", "KY", "LA", "ME", "MD", "MS", "MC", "MN", "MI", "MO", "MT", "NB", "NV", "NH", "NJ", "NC", "NY", "NM", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "WA", "WV", "WI", "WY" };
 
+
+        /**
+         * Purpose: DESCRIPTION
+         * Arguments:
+         *     name - Description for name
+         * Return:
+         *     Description for return value
+         */
         public string RandomizeCustomerProducts()
         {
             var rnd1 = rnd.Next(customers.Length);
@@ -51,6 +67,14 @@ namespace Bangazon_Financials
             return command;
         }
 
+
+        /**
+         * Purpose: DESCRIPTION
+         * Arguments:
+         *     name - Description for name
+         * Return:
+         *     Description for return value
+         */
         public string RandomizeCustomerProducts(int numOfEntries)
         {
             string returnstring = "";
@@ -58,6 +82,13 @@ namespace Bangazon_Financials
             return returnstring;
         }
 
+        /**
+         * Purpose: DESCRIPTION
+         * Arguments:
+         *     name - Description for name
+         * Return:
+         *     Description for return value
+         */
         public void CreateDatabase()
         {
 

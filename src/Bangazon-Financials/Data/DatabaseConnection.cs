@@ -121,6 +121,30 @@ namespace Bangazon_Financials
             return output;
         }
 
+        public List<Revenue> getByProduct()
+        {
+            var output = new List<Revenue>();
+
+            execute(@"select ProductName,
+	                        Sum(ProductRevenue) as 'TotalRevenue'
+                        from Revenue
+                        group by ProductName
+                        order by TotalRevenue desc",
+                    (SqliteDataReader reader) =>
+                    {
+                        while (reader.Read())
+                        {
+                            output.Add(new Revenue
+                            {
+                                ProductName = reader[0].ToString(),
+                                ProductRevenue = reader.GetInt32(1)
+                            });
+                        }
+                    });
+
+            return output;
+        }
+
         /**
          * Purpose: Execute SQL statement
          * Arguments:
