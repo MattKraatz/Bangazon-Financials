@@ -28,6 +28,7 @@ namespace Bangazon_Financials_Testing
                 Assert.NotNull(item.ProductRevenue);
                 Assert.NotNull(item.ProductSupplierState);
                 Assert.NotNull(item.PurchaseDate);
+                Assert.IsType<DateTime>(item.PurchaseDate);
                 Assert.True(item.PurchaseDate > DateTime.Today.AddDays(-7));
             });
         }

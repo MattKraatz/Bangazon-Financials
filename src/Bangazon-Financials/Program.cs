@@ -9,7 +9,6 @@ namespace Bangazon_Financials
     {
         public static void Main(string[] args)
         {
-            
         }
     }
 }

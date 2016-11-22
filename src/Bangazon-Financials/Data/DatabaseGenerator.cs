@@ -30,8 +30,8 @@ namespace Bangazon_Financials
             var rnd6 = rnd.Next(customerZipcode.Length);
             var rnd7 = rnd.Next(supplierState.Length);
 
-            DateTime start = DateTime.Today.AddDays(-200);
-            int range = (DateTime.Today - start).Days;
+            int range = 200;
+            DateTime start = DateTime.Today.AddDays(-range);
 
             string command = $@"
         INSERT INTO Revenue 
@@ -45,7 +45,7 @@ namespace Bangazon_Financials
             '{customersLastName[rnd2]}', 
             '{customerAddressNumbers[rnd4]} {customerAddressStreet[rnd5]}', 
             {customerZipcode[rnd6]}, 
-            '{start.AddDays(rnd.Next(range))}'
+            '{start.AddDays(rnd.Next(range)).ToString("yyyy-MM-dd HH:mm:ss")}'
         );";
 
             return command;
