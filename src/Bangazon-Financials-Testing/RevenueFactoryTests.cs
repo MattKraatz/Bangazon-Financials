@@ -66,21 +66,6 @@ namespace Bangazon_Financials_Testing
             Assert.True(rev.Count > 1);
             rev.ForEach(delegate (Revenue item)
             {
-                Assert.NotNull(item.CustomerFirstName);
-                Assert.NotNull(item.CustomerLastName);
-                Assert.NotNull(item.ProductRevenue);
-            });
-        }
-
-        [Fact]
-        public void CanGetRevenueByCustomer()
-        {
-            var conn = new DatabaseConnection();
-            List<Revenue> rev = conn.getByCustomer();
-            Assert.NotNull(rev);
-            Assert.True(rev.Count > 1);
-            rev.ForEach(delegate (Revenue item)
-            {
                 Assert.NotNull(item.CustomerAddress);
                 Assert.NotNull(item.CustomerFirstName);
                 Assert.NotNull(item.CustomerLastName);
@@ -93,6 +78,21 @@ namespace Bangazon_Financials_Testing
                 Assert.NotNull(item.PurchaseDate);
                 Assert.IsType<DateTime>(item.PurchaseDate);
                 Assert.True(item.PurchaseDate > DateTime.Today.AddMonths(-3));
+            });
+        }
+
+        [Fact]
+        public void CanGetRevenueByCustomer()
+        {
+            var conn = new DatabaseConnection();
+            List<Revenue> rev = conn.getByCustomer();
+            Assert.NotNull(rev);
+            Assert.True(rev.Count > 1);
+            rev.ForEach(delegate (Revenue item)
+            {
+                Assert.NotNull(item.CustomerFirstName);
+                Assert.NotNull(item.CustomerLastName);
+                Assert.NotNull(item.ProductRevenue);
             });
         }
     }
