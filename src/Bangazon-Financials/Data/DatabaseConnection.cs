@@ -24,7 +24,8 @@ namespace Bangazon_Financials
                         ProductRevenue,
                         PurchaseDate
                     from Revenue
-                    where PurchaseDate BETWEEN DateTime('now','-7 days') AND DateTime('now')",
+                    where PurchaseDate BETWEEN DateTime('now','-7 days') AND DateTime('now')
+                    order by PurchaseDate desc",
                     (SqliteDataReader reader) =>
                     {
                         while (reader.Read())
@@ -49,7 +50,8 @@ namespace Bangazon_Financials
                         ProductRevenue,
                         PurchaseDate
                     from Revenue
-                    where PurchaseDate BETWEEN DateTime('now','-1 month') AND DateTime('now')",
+                    where PurchaseDate BETWEEN DateTime('now','-1 month') AND DateTime('now')
+                    order by PurchaseDate desc",
                     (SqliteDataReader reader) =>
                     {
                         while (reader.Read())
@@ -75,7 +77,8 @@ namespace Bangazon_Financials
                         ProductRevenue,
                         PurchaseDate
                     from Revenue
-                    where PurchaseDate BETWEEN DateTime('now','-3 months') AND DateTime('now')",
+                    where PurchaseDate BETWEEN DateTime('now','-3 months') AND DateTime('now')
+                    order by PurchaseDate desc",
                     (SqliteDataReader reader) =>
                     {
                         while (reader.Read())
