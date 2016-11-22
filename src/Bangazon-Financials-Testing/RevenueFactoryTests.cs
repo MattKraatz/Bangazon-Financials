@@ -18,15 +18,8 @@ namespace Bangazon_Financials_Testing
             Assert.True(rev.Count > 1);
             rev.ForEach(delegate (Revenue item)
             {
-                Assert.NotNull(item.CustomerAddress);
-                Assert.NotNull(item.CustomerFirstName);
-                Assert.NotNull(item.CustomerLastName);
-                Assert.NotNull(item.CustomerZipCode);
-                Assert.NotNull(item.Id);
-                Assert.NotNull(item.ProductCost);
                 Assert.NotNull(item.ProductName);
                 Assert.NotNull(item.ProductRevenue);
-                Assert.NotNull(item.ProductSupplierState);
                 Assert.NotNull(item.PurchaseDate);
                 Assert.IsType<DateTime>(item.PurchaseDate);
                 Assert.True(item.PurchaseDate > DateTime.Today.AddDays(-7));
@@ -42,15 +35,8 @@ namespace Bangazon_Financials_Testing
             Assert.True(rev.Count > 1);
             rev.ForEach(delegate (Revenue item)
             {
-                Assert.NotNull(item.CustomerAddress);
-                Assert.NotNull(item.CustomerFirstName);
-                Assert.NotNull(item.CustomerLastName);
-                Assert.NotNull(item.CustomerZipCode);
-                Assert.NotNull(item.Id);
-                Assert.NotNull(item.ProductCost);
                 Assert.NotNull(item.ProductName);
                 Assert.NotNull(item.ProductRevenue);
-                Assert.NotNull(item.ProductSupplierState);
                 Assert.NotNull(item.PurchaseDate);
                 Assert.IsType<DateTime>(item.PurchaseDate);
                 Assert.True(item.PurchaseDate > DateTime.Today.AddMonths(-1));
@@ -66,15 +52,8 @@ namespace Bangazon_Financials_Testing
             Assert.True(rev.Count > 1);
             rev.ForEach(delegate (Revenue item)
             {
-                Assert.NotNull(item.CustomerAddress);
-                Assert.NotNull(item.CustomerFirstName);
-                Assert.NotNull(item.CustomerLastName);
-                Assert.NotNull(item.CustomerZipCode);
-                Assert.NotNull(item.Id);
-                Assert.NotNull(item.ProductCost);
                 Assert.NotNull(item.ProductName);
                 Assert.NotNull(item.ProductRevenue);
-                Assert.NotNull(item.ProductSupplierState);
                 Assert.NotNull(item.PurchaseDate);
                 Assert.IsType<DateTime>(item.PurchaseDate);
                 Assert.True(item.PurchaseDate > DateTime.Today.AddMonths(-3));

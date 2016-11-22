@@ -20,15 +20,8 @@ namespace Bangazon_Financials
         {
             var output = new List<Revenue>();
 
-            execute(@"select Id,
-                        ProductName,
-                        ProductCost,
+            execute(@"select ProductName,
                         ProductRevenue,
-                        ProductSupplierState,
-                        CustomerFirstName,
-                        CustomerLastName,
-                        CustomerAddress,
-                        CustomerZipCode,
                         PurchaseDate
                     from Revenue
                     where PurchaseDate BETWEEN DateTime('now','-7 days') AND DateTime('now')",
@@ -38,16 +31,9 @@ namespace Bangazon_Financials
                         {
                             output.Add(new Revenue
                             {
-                                Id = reader.GetInt32(0),
-                                ProductName = reader[1].ToString(),
-                                ProductCost = reader.GetInt32(2),
-                                ProductRevenue = reader.GetInt32(3),
-                                ProductSupplierState = reader[4].ToString(),
-                                CustomerFirstName = reader[5].ToString(),
-                                CustomerLastName = reader[6].ToString(),
-                                CustomerAddress = reader[7].ToString(),
-                                CustomerZipCode = reader.GetInt32(8),
-                                PurchaseDate = Convert.ToDateTime(reader[9].ToString())
+                                ProductName = reader[0].ToString(),
+                                ProductRevenue = reader.GetInt32(1),
+                                PurchaseDate = Convert.ToDateTime(reader[2].ToString())
                             });
                         }
                     });
@@ -59,15 +45,8 @@ namespace Bangazon_Financials
         {
             var output = new List<Revenue>();
 
-            execute(@"select Id,
-                        ProductName,
-                        ProductCost,
+            execute(@"select ProductName,
                         ProductRevenue,
-                        ProductSupplierState,
-                        CustomerFirstName,
-                        CustomerLastName,
-                        CustomerAddress,
-                        CustomerZipCode,
                         PurchaseDate
                     from Revenue
                     where PurchaseDate BETWEEN DateTime('now','-1 month') AND DateTime('now')",
@@ -77,16 +56,9 @@ namespace Bangazon_Financials
                         {
                             output.Add(new Revenue
                             {
-                                Id = reader.GetInt32(0),
-                                ProductName = reader[1].ToString(),
-                                ProductCost = reader.GetInt32(2),
-                                ProductRevenue = reader.GetInt32(3),
-                                ProductSupplierState = reader[4].ToString(),
-                                CustomerFirstName = reader[5].ToString(),
-                                CustomerLastName = reader[6].ToString(),
-                                CustomerAddress = reader[7].ToString(),
-                                CustomerZipCode = reader.GetInt32(8),
-                                PurchaseDate = Convert.ToDateTime(reader[9].ToString())
+                                ProductName = reader[0].ToString(),
+                                ProductRevenue = reader.GetInt32(1),
+                                PurchaseDate = Convert.ToDateTime(reader[2].ToString())
                             });
                         }
                     });
@@ -99,15 +71,8 @@ namespace Bangazon_Financials
         {
             var output = new List<Revenue>();
 
-            execute(@"select Id,
-                        ProductName,
-                        ProductCost,
+            execute(@"select ProductName,
                         ProductRevenue,
-                        ProductSupplierState,
-                        CustomerFirstName,
-                        CustomerLastName,
-                        CustomerAddress,
-                        CustomerZipCode,
                         PurchaseDate
                     from Revenue
                     where PurchaseDate BETWEEN DateTime('now','-3 months') AND DateTime('now')",
@@ -117,16 +82,9 @@ namespace Bangazon_Financials
                         {
                             output.Add(new Revenue
                             {
-                                Id = reader.GetInt32(0),
-                                ProductName = reader[1].ToString(),
-                                ProductCost = reader.GetInt32(2),
-                                ProductRevenue = reader.GetInt32(3),
-                                ProductSupplierState = reader[4].ToString(),
-                                CustomerFirstName = reader[5].ToString(),
-                                CustomerLastName = reader[6].ToString(),
-                                CustomerAddress = reader[7].ToString(),
-                                CustomerZipCode = reader.GetInt32(8),
-                                PurchaseDate = Convert.ToDateTime(reader[9].ToString())
+                                ProductName = reader[0].ToString(),
+                                ProductRevenue = reader.GetInt32(1),
+                                PurchaseDate = Convert.ToDateTime(reader[2].ToString())
                             });
                         }
                     });
