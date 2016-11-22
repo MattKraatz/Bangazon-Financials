@@ -74,5 +74,19 @@ namespace Bangazon_Financials_Testing
                 Assert.NotNull(item.ProductRevenue);
             });
         }
+
+        [Fact]
+        public void CanGetRevenueByProduct()
+        {
+            var conn = new DatabaseConnection();
+            List<Revenue> rev = conn.getByProduct();
+            Assert.NotNull(rev);
+            Assert.True(rev.Count > 1);
+            rev.ForEach(delegate (Revenue item)
+            {
+                Assert.NotNull(item.ProductName);
+                Assert.NotNull(item.ProductRevenue);
+            });
+        }
     }
 }
