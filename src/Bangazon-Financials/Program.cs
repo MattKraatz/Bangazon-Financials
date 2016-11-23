@@ -17,6 +17,14 @@ namespace Bangazon_Financials
          */
         public static void Main(string[] args)
         {
+            // Check the database to see whether it requires population
+            var dbcon = new DatabaseConnection();
+            if (dbcon.getWeek().Count == 0)
+            {
+                var database = new DatabaseGenerator();
+                database.CreateDatabase();
+            }
+
             // Variable to contain user selection on Main Menu
             string selection = "";
             while (selection == "")

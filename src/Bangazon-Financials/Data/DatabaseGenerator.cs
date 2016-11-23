@@ -6,7 +6,6 @@ using Microsoft.Data.Sqlite;
 
 namespace Bangazon_Financials
 {
-
     /**
      * Class: DatabaseGenerator
      * Purpose: Build and execute SQL commands to generate a Revenue table and populate it with randomized data
