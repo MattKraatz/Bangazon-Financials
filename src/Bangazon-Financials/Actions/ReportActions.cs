@@ -6,8 +6,30 @@ using System.Threading.Tasks;
 
 namespace Bangazon_Financials
 {
+
+    /**
+     * Class: ReportActions
+     * Purpose: Provide methods for displaying any available Reports
+     * Author: Matt Kraatz
+     * Methods:
+     *     void WeeklyReport() - Display an itemized list of products sold this week
+     *     void MonthlyReport() - Display an itemized list of products sold this month
+     *     void QuarterlyReport() - Display an itemized list of products sold this quarter
+     *     void CustomerReport() - Display all customers in order of total revenue
+     *     void ProductReport() - Display all products, in order of total revenue
+     */
     public class ReportActions
     {
+        /**
+         * Purpose: Display an itemized list of products sold this week
+         * Arguments:
+         *     void
+         * Return:
+         *     Retrieves a list of revenue lines from the database,
+         *     prints a header and subheader,
+         *     prints a list of products and their price,
+         *     waits for input before exiting to the menu system
+         */
         public static void WeeklyReport()
         {
             Console.WriteLine(@"
@@ -24,17 +46,24 @@ Product                       Amount
             List<Revenue> output = conn.getWeek();
             output.ForEach(delegate (Revenue line)
             {
-                StringBuilder buffer = new StringBuilder();
-                for (int i = 0; i < 30 - line.ProductName.Count(); i++)
-                {
-                    buffer.Append(" ");
-                }
-                Console.WriteLine($"{line.ProductName}{buffer}{line.ProductRevenue}");
+                string buffer = Buffer.build(line.ProductName.Count());
+                Console.WriteLine($"{line.ProductName}{buffer}${line.ProductRevenue}.00");
             });
             Console.WriteLine("Press Enter to return to the Main Menu");
             Console.ReadLine();
         }
 
+
+        /**
+         * Purpose: Display an itemized list of products sold this month
+         * Arguments:
+         *     void
+         * Return:
+         *     Retrieves a list of revenue lines from the database,
+         *     prints a header and subheader,
+         *     prints a list of products and their price,
+         *     waits for input before exiting to the menu system
+         */
         public static void MonthlyReport()
         {
             Console.WriteLine(@"
@@ -51,17 +80,24 @@ Product                       Amount
             List<Revenue> output = conn.getMonth();
             output.ForEach(delegate (Revenue line)
             {
-                StringBuilder buffer = new StringBuilder();
-                for (int i = 0; i < 30 - line.ProductName.Count(); i++)
-                {
-                    buffer.Append(" ");
-                }
-                Console.WriteLine($"{line.ProductName}{buffer}{line.ProductRevenue}");
+                string buffer = Buffer.build(line.ProductName.Count());
+                Console.WriteLine($"{line.ProductName}{buffer}${line.ProductRevenue}.00");
             });
             Console.WriteLine("Press Enter to return to the Main Menu");
             Console.ReadLine();
         }
 
+
+        /**
+         * Purpose: Display an itemized list of products sold this quarter
+         * Arguments:
+         *     void
+         * Return:
+         *     Retrieves a list of revenue lines from the database,
+         *     prints a header and subheader,
+         *     prints a list of products and their price,
+         *     waits for input before exiting to the menu system
+         */
         public static void QuarterlyReport()
         {
             Console.WriteLine(@"
@@ -78,17 +114,23 @@ Product                       Amount
             List<Revenue> output = conn.getQuarter();
             output.ForEach(delegate (Revenue line)
             {
-                StringBuilder buffer = new StringBuilder();
-                for (int i = 0; i < 30 - line.ProductName.Count(); i++)
-                {
-                    buffer.Append(" ");
-                }
-                Console.WriteLine($"{line.ProductName}{buffer}{line.ProductRevenue}");
+                string buffer = Buffer.build(line.ProductName.Count());
+                Console.WriteLine($"{line.ProductName}{buffer}${line.ProductRevenue}.00");
             });
             Console.WriteLine("Press Enter to return to the Main Menu");
             Console.ReadLine();
         }
 
+        /**
+         * Purpose: Display all customers in order of total revenue
+         * Arguments:
+         *     void
+         * Return:
+         *     Retrieves a list of revenue lines from the database,
+         *     prints a header and subheader,
+         *     prints a customer names and their total revenue,
+         *     waits for input before exiting to the menu system
+         */
         public static void CustomerReport()
         {
             Console.WriteLine(@"
@@ -105,17 +147,23 @@ Customer                      Amount
             List<Revenue> output = conn.getByCustomer();
             output.ForEach(delegate (Revenue line)
             {
-                StringBuilder buffer = new StringBuilder();
-                for (int i = 0; i < 29 - (line.CustomerFirstName.Count() + line.CustomerLastName.Count()); i++)
-                {
-                    buffer.Append(" ");
-                }
-                Console.WriteLine($"{line.CustomerFirstName} {line.CustomerLastName}{buffer}{line.ProductRevenue}");
+                string buffer = Buffer.build(line.CustomerFirstName.Count() + line.CustomerLastName.Count() + 1);
+                Console.WriteLine($"{line.CustomerFirstName} {line.CustomerLastName}{buffer}${line.ProductRevenue}.00");
             });
             Console.WriteLine("Press Enter to return to the Main Menu");
             Console.ReadLine();
         }
 
+        /**
+         * Purpose: Display all products in order of total revenue
+         * Arguments:
+         *     void
+         * Return:
+         *     Retrieves a list of revenue lines from the database,
+         *     prints a header and subheader,
+         *     prints a a list of products and their total revenue,
+         *     waits for input before exiting to the menu system
+         */
         public static void ProductReport()
         {
             Console.WriteLine(@"
@@ -132,12 +180,8 @@ Product                       Amount
             List<Revenue> output = conn.getByProduct();
             output.ForEach(delegate (Revenue line)
             {
-                StringBuilder buffer = new StringBuilder();
-                for (int i = 0; i < 30 - (line.ProductName.Count()); i++)
-                {
-                    buffer.Append(" ");
-                }
-                Console.WriteLine($"{line.ProductName}{buffer}{line.ProductRevenue}");
+                string buffer = Buffer.build(line.ProductName.Count());
+                Console.WriteLine($"{line.ProductName}{buffer}${line.ProductRevenue}.00");
             });
             Console.WriteLine("Press Enter to return to the Main Menu");
             Console.ReadLine();

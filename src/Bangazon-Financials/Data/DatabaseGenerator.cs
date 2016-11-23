@@ -8,16 +8,20 @@ namespace Bangazon_Financials
 {
 
     /**
-     * Class: NAME
-     * Purpose: DESCRIPTION
-     * Author: YOUR NAME
+     * Class: DatabaseGenerator
+     * Purpose: Build and execute SQL commands to generate a Revenue table and populate it with randomized data
+     * Author: Matt Kraatz
      * Methods:
-     *     string DocMe() - description
+     *     string RandomizeCustomerProducts() - Provide an insert commands with randomized product data
+     *     string RandomizeCustomerProducts(int numOfEntries) - Build a string of insert commands with randomized products
+     *     void CreateDatabase() - Execute SQL commands to create a Revenue table in a database
+     *     
      */
     public class DatabaseGenerator
     {
         Random rnd = new Random();
 
+        // Arrays of acceptable values to be added to product revenue lines at random
         string[] customers = new[] { "Carys", "Emmett", "Latoya", "Trina", "Kade", "Torin", "Aggie", "Caelan", "Patsy", "Bettina", "Hans", "Leda", "Clair", "Evan", "Roscoe", "Sondra", "Dixon", "Gail" };
         string[] customersLastName = new[] { "Smith", "Johnson", "Williams", "Jones", "Brown", "Davis", "Miller", "Wilson", "Moore", "Taylor", "Anderson", "Thomas", "Jackson", "White", "Harris", "Martin" };
         string[] products = new[] { "Rug", "Wine Glasses", "Book Ends", "Picture Frame", "Blu-Ray Player", "Digital Camera", "Stuffed Animal - Monkey", "Stuffed Animal - Sloth", "Spatula", "Crayons", "Headphones", "Lawn Furniture", "Hammer", "Computer Monitor", "Golf Clubs", "Raspberry Pi", "eReader" };
@@ -30,14 +34,15 @@ namespace Bangazon_Financials
 
 
         /**
-         * Purpose: DESCRIPTION
+         * Purpose: Provide an insert commands with randomized product data
          * Arguments:
-         *     name - Description for name
+         *     void
          * Return:
-         *     Description for return value
+         *     Insert commands with randomized product data
          */
         public string RandomizeCustomerProducts()
         {
+            // Generate random numbers within an acceptable range for each product property
             var rnd1 = rnd.Next(customers.Length);
             var rnd2 = rnd.Next(customersLastName.Length);
             var rnd3 = rnd.Next(products.Length);
@@ -49,6 +54,7 @@ namespace Bangazon_Financials
             int range = 200;
             DateTime start = DateTime.Today.AddDays(-range);
 
+            // Build the insert command string
             string command = $@"
         INSERT INTO Revenue 
         VALUES (
@@ -69,11 +75,11 @@ namespace Bangazon_Financials
 
 
         /**
-         * Purpose: DESCRIPTION
+         * Purpose: Build a string of insert commands with randomized products
          * Arguments:
-         *     name - Description for name
+         *     numOfEntries - number of rows to create in the database
          * Return:
-         *     Description for return value
+         *     Strong of insert commands with randomized products
          */
         public string RandomizeCustomerProducts(int numOfEntries)
         {
@@ -83,16 +89,16 @@ namespace Bangazon_Financials
         }
 
         /**
-         * Purpose: DESCRIPTION
+         * Purpose: Execute SQL commands to create a Revenue table in a database
          * Arguments:
-         *     name - Description for name
+         *     void
          * Return:
-         *     Description for return value
+         *     void
          */
         public void CreateDatabase()
         {
-
-            string sql3 = "CREATE TABLE Revenue (" +
+            // SQL commands for creating the Revenue table and adding randomized rows
+            string sql = "CREATE TABLE Revenue (" +
                                 "[Id] INTEGER NOT NULL CONSTRAINT \"PK_Revenue\" PRIMARY KEY AUTOINCREMENT, " +
                                 "[ProductName] TEXT NOT NULL, " +
                                 "[ProductCost] INTEGER NOT NULL," +
@@ -106,14 +112,15 @@ namespace Bangazon_Financials
                             "); "
                             + RandomizeCustomerProducts(1000);
 
+            // Path to the database file on your system
             var connectionString = @"Filename=C:\Users\Matt\Documents\Databases\BangazonRevenue.db";
 
             SqliteConnection connection = new SqliteConnection(connectionString);
             using (connection)
             {
                 connection.Open();
-                SqliteCommand command3 = new SqliteCommand(sql3, connection);
-                command3.ExecuteNonQuery();
+                SqliteCommand command = new SqliteCommand(sql, connection);
+                command.ExecuteNonQuery();
             }
         }
     }
